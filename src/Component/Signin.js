@@ -3,6 +3,10 @@ export default function Signin(props) {
     const {setTimer, passwordHideShow, setOTPNumber} = props;
     const showOTP = ()=>{
         const credentials = localStorage.getItem("credentials")
+        if(credentials===null){
+            alert("Invalid Email or Password.")
+            return;
+        }
         const data = JSON.parse(credentials)
         let k = false;
         data.forEach((element)=>{
