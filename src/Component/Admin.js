@@ -1,9 +1,14 @@
+import {useNavigate} from "react-router-dom";
+
 export default function Admin(props) {
 
+    const navigate = useNavigate()
     const {setAdmin} = props
     const adminSubmit = (e) => {
         e.preventDefault()
-        putAdmin()
+        putAdmin().then(()=>console.log("Form submitted"))
+        e.target.reset()
+        navigate('/')
     }
 
     const putAdmin = async () => {
