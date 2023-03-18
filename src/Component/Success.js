@@ -1,9 +1,10 @@
-import img from "../images/Logo.png"
+export default function Success(props){
 
-export default function Success(){
+    const {admin} = props;
+
     return(
         <div id={"success-div"}>
-            <img src={img}/>
+            <img src={admin.image} alt={"Subtact-icon"} className={"icon"}/>
             <h4 className={"success-p"}>Success!</h4>
         </div>
     )

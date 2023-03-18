@@ -1,6 +1,6 @@
 export default function Signin(props) {
 
-    const {setTimer, passwordHideShow, setOTPNumber} = props;
+    const {setTimer, passwordHideShow, setOTPNumber, admin} = props;
     const showOTP = ()=>{
         const credentials = localStorage.getItem("credentials")
         if(credentials===null){
@@ -36,7 +36,7 @@ export default function Signin(props) {
 
     return (
         <div className={"main-content-div"} id={"signin-div"}>
-                <h1 className={"title"}>Welcome to <br/>Systempackage</h1>
+                <h1 className={"title"}>{admin.text}</h1>
                 <form className={"signin-form"} id={"signin-form"}>
                     <input className={"signin-input"} id={"signin-email"} placeholder={"Email"}/>
                     <select className={"signin-select"} id={"signin-select"}>

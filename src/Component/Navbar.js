@@ -1,6 +1,6 @@
-import img from "../images/Logo.png"
+export default function Navbar(props) {
 
-export default function Navbar() {
+    const {admin} = props;
 
     const showSignup = ()=>{
         document.getElementById("signin-div").style.cssText = `
@@ -20,7 +20,7 @@ export default function Navbar() {
     return (
         <div className={"navbar"} id={"navbar"}>
             <div>
-                <img src={img} alt={"subtract icon"} className={"navbar-icon"}/>
+                <img src={admin.image} alt={"subtract icon"} className={"icon"}/>
             </div>
             <div className={"navbar-right"}>
                 <p className={"navbar-p"}>Not member? <span className={"create-account"} onClick={showSignup}>Create Account</span></p>
