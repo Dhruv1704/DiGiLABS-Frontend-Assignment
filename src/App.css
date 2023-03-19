@@ -12,6 +12,10 @@
     color: #18181B;
 }
 
+.navbar-right{
+    display: flex;
+}
+
 a,.create-account{
     color: #0858F7;
     text-decoration: none;

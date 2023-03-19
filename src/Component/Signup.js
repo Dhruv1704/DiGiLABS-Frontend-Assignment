@@ -6,7 +6,7 @@ export default function Signup(props){
         const email = document.getElementById("signup-email").value + document.getElementById("signup-select").value
         const password = document.getElementById("password2").value
         const confirmPassword = document.getElementById("password3").value
-        if(password!=confirmPassword){
+        if(password!==confirmPassword){
             alert("The password does not match")
         }
         else{
@@ -34,6 +34,16 @@ export default function Signup(props){
         }
     }
 
+    const showSignIn = ()=>{
+        document.getElementById("signup-div").style.cssText = `
+            opacity:0;
+            transform: scale(0);
+        `
+        document.getElementById("signin-div").style.cssText = `
+            opacity:1;
+            transform: scale(1);
+        `
+    }
     return(
         <div className={"main-content-div"} id={"signup-div"}>
             <h1 className={"title"}>Sign Up</h1>
@@ -55,6 +65,7 @@ export default function Signup(props){
                 <i className="fa-solid fa-eye" id="eye3" onClick={()=>passwordHideShow(3)}></i>
                 <br/>
                 <button type={"button"} className={"signin-button"} onClick={signUp}><span className={"signin-button-span"}>Sign Up</span></button>
+                <p className={"create-account"} onClick={showSignIn}>Back</p>
             </form>
         </div>
     )

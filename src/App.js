@@ -8,7 +8,7 @@ import img from "./images/Logo.png";
 
 function App() {
 
-    const [admin, setAdmin] = useState({text:"Welcome to Systempackage",image:img});
+    const [admin, setAdmin] = useState({text:"Welcome to SystemPackage",image:img});
 
     return (
         <div className="App">

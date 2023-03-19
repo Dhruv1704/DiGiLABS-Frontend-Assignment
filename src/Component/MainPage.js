@@ -5,29 +5,27 @@ import OTP from "./OTP"
 import {useEffect, useState} from "react";
 import Signup from "./Signup";
 import Success from "./Success";
-import img from "../images/Logo.png"
+import emailjs from "@emailjs/browser"
 
 
 export default function MainPage(props) {
     const [timer, setTimer] = useState(10);
     const [cOTP, setCOTP] = useState(0);
+    const [email, setEmail] = useState("email");
     const {admin, setAdmin} = props
 
     useEffect(()=>{
         fetchAdmin()
             .then(()=> console.log("admin fetch successfull"))
             .catch((e)=> console.log(e,"error occurred"))
+        // eslint-disable-next-line
     },[])
     const fetchAdmin = async ()=>{
-        const response = await fetch("http://localhost:5000")
+        const response = await fetch("https://digilabs-backend.vercel.app/")
         const json = await response.json()
-        const base64String = btoa(
-            String.fromCharCode(...new Uint8Array(json.image.data.data))
-        )
-        const imageSrc = `data:image/*;base64,${base64String}`
         const newAdmin = {
             text:json.text,
-            image:imageSrc
+            image:json.image
         }
         setAdmin(newAdmin)
     }
@@ -43,7 +41,16 @@ export default function MainPage(props) {
     const setOTPNumber = () => {
         let otp = Math.floor(100000 + Math.random() * 900000)
         setCOTP(otp);
-        alert("Your OTP is-" + otp)
+        sendEmail(otp)
+        alert("Your OTP is-" + otp+ " and it has also been emailed to you using emailjs")
+    }
+
+    const sendEmail = (otp)=>{
+        const params = {
+            email_id : document.getElementById("signin-email").value + document.getElementById("signin-select").value,
+            message : otp
+        }
+        emailjs.send("service_o8bqi8g", "template_lkrd5tf", params,"NDbkAsVkcijeZ68qr")
     }
 
     return (
@@ -57,8 +64,8 @@ export default function MainPage(props) {
                 </div>
                 <div className={"signin-otp-div"}>
                     <Signup passwordHideShow={passwordHideShow}/>
-                    <Signin setTimer={setTimer} passwordHideShow={passwordHideShow} setOTPNumber={setOTPNumber} admin={admin}/>
-                    <OTP timer={timer} setTimer={setTimer} cOTP={cOTP} setOTPNumber={setOTPNumber}/>
+                    <Signin setEmail={setEmail} setTimer={setTimer} passwordHideShow={passwordHideShow} setOTPNumber={setOTPNumber} admin={admin}/>
+                    <OTP timer={timer} email={email} setTimer={setTimer} cOTP={cOTP} setOTPNumber={setOTPNumber}/>
                 </div>
             </div>
             <Success admin={admin}/>

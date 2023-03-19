@@ -19,7 +19,7 @@ export default function Carousal(props) {
             element.style.opacity = 0.2;
         })
         document.getElementById(e).style.opacity = 1
-        if(k!=1) document.getElementById("banner-1").style.opacity = 0.2
+        if(k!==1) document.getElementById("banner-1").style.opacity = 0.2
         else document.getElementById("banner-1").style.opacity = 1
         const slide = document.getElementById("slide-" + k);
         slide.style.cssText = `
@@ -39,7 +39,7 @@ export default function Carousal(props) {
     return (
         <div className={`carousal-div ${classname}`}>
             <div>
-                <img src={bannerImg} className={"carousal-img"}/>
+                <img src={bannerImg} className={"carousal-img"} alt={"carousal"}/>
             </div>
             <div>
                 <div className={"banners"}>
@@ -53,11 +53,11 @@ export default function Carousal(props) {
                     </div>
                     <div className={"slides"} id={"slide-3"}>
                         <h3>Cloudnotes.</h3>
-                        <p>This is my MERN stack project to store notes-<a href={"https://cloudnotes-1701.web.app/"} target={"_blank"} className={"banner-link"}>Link</a></p>
+                        <p>This is my MERN stack project to store notes-<a href={"https://cloudnotes-1701.web.app/"} rel={"noreferrer"} target={"_blank"} className={"banner-link"}>Link</a></p>
                     </div>
                     <div className={"slides"} id={"slide-4"}>
                         <h3>News-Bulletin</h3>
-                        <p>React project which displays news for multiple countries/categories-<a href={"https://news-bulletin-17.web.app/"} target={"_blank"} className={"banner-link"}>Link</a></p>
+                        <p>React project which displays news for multiple countries/categories-<a href={"https://news-bulletin-17.web.app/"} target={"_blank"} rel={"noreferrer"} className={"banner-link"}>Link</a></p>
                     </div>
                 </div>
                 <div className={"banner-share-radio-div"}>

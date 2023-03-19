@@ -1,6 +1,6 @@
 export default function Signin(props) {
 
-    const {setTimer, passwordHideShow, setOTPNumber, admin} = props;
+    const {setTimer, passwordHideShow, setOTPNumber, admin, setEmail} = props;
     const showOTP = ()=>{
         const credentials = localStorage.getItem("credentials")
         if(credentials===null){
@@ -14,6 +14,7 @@ export default function Signin(props) {
             const password = document.getElementById("password1").value
             if(element.email===email && element.password===password){
                 k=true;
+                setEmail(email)
             }
         })
         if(!k){

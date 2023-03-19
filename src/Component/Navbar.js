@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 export default function Navbar(props) {
 
     const {admin} = props;
@@ -23,7 +25,8 @@ export default function Navbar(props) {
                 <img src={admin.image} alt={"subtract icon"} className={"icon"}/>
             </div>
             <div className={"navbar-right"}>
-                <p className={"navbar-p"}>Not member? <span className={"create-account"} onClick={showSignup}>Create Account</span></p>
+                <Link className={"create-account navbar-p"} to={"/admin"}><p>Admin Page&nbsp;</p></Link>
+                <p className={"navbar-p"}>| Not member? <span className={"create-account"} onClick={showSignup}>Create Account</span></p>
             </div>
         </div>
     );

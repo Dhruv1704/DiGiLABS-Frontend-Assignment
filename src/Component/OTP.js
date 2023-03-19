@@ -1,15 +1,14 @@
 import OTPInput from "otp-input-react";
-import {useEffect, useState, useRef} from "react";
+import {useEffect, useState} from "react";
 
 export default function OTP(props){
-    const {timer, setTimer, setOTPNumber, cOTP} = props;
+    const {timer, setTimer, setOTPNumber, cOTP, email} = props;
     const [OTP, setOTP] = useState("");
-    const ref = useRef(null);
 
     useEffect(()=>{
         const Timer = ()=>{
             setTimeout(()=>{
-                if(timer>0 && document.getElementById("OTP-div").style.transform!="scale(0)"){
+                if(timer>0 && document.getElementById("OTP-div").style.transform!=="scale(0)"){
                     setTimer(timer-1)
                 }
             },1000)
@@ -31,7 +30,7 @@ export default function OTP(props){
 
     const OTPverify = (otp)=>{
         if(otp.toString().length===6){
-            if(otp==cOTP){
+            if(otpgit ==cOTP){
                 document.getElementById("navbar").style.display = "none"
                 document.getElementById("main").style.display = "none"
                 document.getElementById("success-div").style.display = 'flex'
@@ -47,7 +46,7 @@ export default function OTP(props){
     return(
         <div className={"main-content-div"} id={"OTP-div"}>
             <h1 className={"title"}>Enter the verification <br/> code to continue.</h1>
-            <h4 className={"OTP-subtitle"}>We sent to <a href={"hellouser@heads.design"}>hellouser@heads.design</a>. If you don't see it, check your spam.</h4>
+            <h4 className={"OTP-subtitle"}>We sent to <a href={`mailto:${email}`} rel={"noreferrer"} target={"_blank"}>{email} </a>. If you don't see it, check your spam.</h4>
             <OTPInput value={OTP} onChange={(OTP)=>{
                 OTPverify(OTP);
                 setOTP(OTP)
@@ -59,7 +58,7 @@ export default function OTP(props){
                         setOTPNumber()
                         setTimer(10);
                     }}>Resend</p>
-                    : <p className={"resend-timer"}>Resend 00:{timer!=10?0:null}{timer}</p>
+                    : <p className={"resend-timer"}>Resend 00:{timer!==10?0:null}{timer}</p>
                 }
             </div>
         </div>
