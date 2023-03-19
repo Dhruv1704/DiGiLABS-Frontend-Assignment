@@ -30,7 +30,7 @@ export default function OTP(props){
 
     const OTPverify = (otp)=>{
         if(otp.toString().length===6){
-            if(otpgit ==cOTP){
+            if(otp ==cOTP){
                 document.getElementById("navbar").style.display = "none"
                 document.getElementById("main").style.display = "none"
                 document.getElementById("success-div").style.display = 'flex'
