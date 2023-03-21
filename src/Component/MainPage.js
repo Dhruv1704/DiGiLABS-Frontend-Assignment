@@ -47,7 +47,7 @@ export default function MainPage(props) {
 
     const sendEmail = (otp)=>{
         const params = {
-            email_id : document.getElementById("signin-email").value + document.getElementById("signin-select").value,
+            email : email,
             message : otp
         }
         emailjs.send("service_o8bqi8g", "template_lkrd5tf", params,"NDbkAsVkcijeZ68qr")
